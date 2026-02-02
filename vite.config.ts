@@ -12,6 +12,15 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+  preview: {
+    host: "0.0.0.0",
+    port: process.env.PORT ? parseInt(process.env.PORT) : 4173,
+    strictPort: false,
+    allowedHosts: [
+      "moorgate.up.railway.app",
+      ".railway.app", // Allow all Railway subdomains
+    ],
+  },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
